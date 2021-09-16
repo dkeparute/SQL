@@ -67,19 +67,7 @@ surusiuota pagal valstybes koda didejimo ir panaudojimo procenta mazejimo
 
 select countrycode as valstybes_kodas, language as kalbos_pavadinimas, percentage as procentai
 from countrylanguage
-where isofficial = 'T' and language like 'd%' or language like 'e%' or language like 'f%'
-order by countrycode
-
-select countrycode as valstybes_kodas, language as kalbos_pavadinimas, percentage as procentai
-from countrylanguage
-where isofficial = 'T' and language like 'd%' or language like 'e%' or language like 'f%'
-order percentage desc;
-
-VISUMOJE:
-
-select countrycode as valstybes_kodas, language as kalbos_pavadinimas, percentage as procentai
-from countrylanguage
-where isofficial = 'T' and language like 'd%' or language like 'e%' or language like 'f%'
+where isofficial = true and (language like 'd%' or language like 'e%' or language like 'f%')
 order by countrycode, percentage desc;
 
 
