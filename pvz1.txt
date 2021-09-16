@@ -78,3 +78,5 @@ select name as salies_pavadinimas, continent as zemynas, population as zmoniu_sk
 from country
 where population > 300000 and continent = 'Africa'
 order by population desc
+
+
