@@ -1,0 +1,54 @@
+SQL SINTAKSE:
+
+SQL case is not sensitive, t.y. nesvarbu ar rasysi didziosiomis ar mazosiomis raidemis.
+PVZ SELECT arba select
+
+
+SELECT - nurodymas serveriui duok man kazka tai, pvz. select 1; t.y. duok man 1, select 1, 2+3, 7/4, 2*9, 21-18 - t.y. pateiks stulpelius su kiekviena reiksme.
+
+AS - naudojas suteikti stulpeliui nauja reiksme pvz: select 1 as vienas, 2+3 as suma t.y. vienas stulpelis bus pavadinimu vienas, kitas - suma ir po apacia bus pateiktos reiksmes.
+
+SQL kalba yra multiline'as - t.y. galima skaidyti eilute kaip tik norime, kad ir po viena elementa vienoje eiluteje.
+
+Gali buti daugiau SELECT negu vienas, tada bus du atskiri langai.
+
+
+ZAIBO NAUDOJIMAS
+Jeigu yra pazymeta komanda viena spaudziam ctrl + enter arba zaibas su I ir atspausdins tik ta komanda ant kurios stovima su kursoriu.
+
+Jeigu bus pazymetas tik zaibas, tad atspausdins visas komandas.
+
+KOMENTARAS
+Komentaras yra atliekas prie teksto pridedant --, pvz. -- select 2 as du. Komentaras tesis iki eilutes pabaigos.
+
+TEKSTAS
+
+SQL standarte tekstas, t.y. stringas yra zymimas VIENGUBOM KABUTEM. Pvz. select 'labas;
+
++ SQL supratimu sudetis su kabutese esamu tekstu lygu 0, nes sudetis yra operacija su 2 skaiciais o ne su tektus, pvz. 'labas' + 'krabas' = 0;
+
+
+SQL DUOMENU BAZES STRUKTURA
+
+SELECT
+FROM
+WHERE
+ORDER BY
+=    ar lygu
+>    ar daugiau
+<    ar maziau
+>=    ar daugiau arba lygu
+<=    ar maziau arba lygu
+<>    ar nelygu (JS !=)
+ 
+AND    loginis ir (JS &&)
+OR    loginis arba (JS ||)
+NOT    loginis ne (neiginys) (JS !)
+ 
+
+rusiavimo kryptys
+ASC    didejimo tvarka (default)
+DESC    mazejimo tvarka
+
+komentaras
+-- tekstas kazkoks
