@@ -60,4 +60,33 @@ where name like 'v%s'
 from city
 where name like '%v_l%'
 
-12. 
+UZDAVINYS
+valstybes kodas ir kalbos pavadinimas
+tik oficialios kalbos prasidedancios raidemis 'd', 'e' ir 'f'
+surusiuota pagal valstybes koda didejimo ir panaudojimo procenta mazejimo
+
+select countrycode as valstybes_kodas, language as kalbos_pavadinimas, percentage as procentai
+from countrylanguage
+where isofficial = 'T' and language like 'd%' or language like 'e%' or language like 'f%'
+order by countrycode
+
+select countrycode as valstybes_kodas, language as kalbos_pavadinimas, percentage as procentai
+from countrylanguage
+where isofficial = 'T' and language like 'd%' or language like 'e%' or language like 'f%'
+order percentage desc;
+
+VISUMOJE:
+
+select countrycode as valstybes_kodas, language as kalbos_pavadinimas, percentage as procentai
+from countrylanguage
+where isofficial = 'T' and language like 'd%' or language like 'e%' or language like 'f%'
+order by countrycode, percentage desc;
+
+
+UZDAVINYS:
+Tik valstybiu pavadinimai afrikoje virs 300000 gyventoju surusiuota pagal mazejimo tvarka 
+
+select name as salies_pavadinimas, continent as zemynas, population as zmoniu_skaicius
+from country
+where population > 300000 and continent = 'Africa'
+order by population desc
