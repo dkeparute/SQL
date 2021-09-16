@@ -1,0 +1,173 @@
+SQL SINTAKSE:
+
+SQL case is not sensitive, t.y. nesvarbu ar rasysi didziosiomis ar mazosiomis raidemis.
+PVZ SELECT arba select
+
+
+SELECT - nurodymas serveriui duok man kazka tai, pvz. select 1; t.y. duok man 1, select 1, 2+3, 7/4, 2*9, 21-18 - t.y. pateiks stulpelius su kiekviena reiksme.
+
+AS - naudojas suteikti stulpeliui nauja reiksme pvz: select 1 as vienas, 2+3 as suma t.y. vienas stulpelis bus pavadinimu vienas, kitas - suma ir po apacia bus pateiktos reiksmes.
+
+SQL kalba yra multiline'as - t.y. galima skaidyti eilute kaip tik norime, kad ir po viena elementa vienoje eiluteje.
+
+Gali buti daugiau SELECT negu vienas, tada bus du atskiri langai.
+
+
+ZAIBO NAUDOJIMAS
+Jeigu yra pazymeta komanda viena spaudziam ctrl + enter arba zaibas su I ir atspausdins tik ta komanda ant kurios stovima su kursoriu.
+
+Jeigu bus pazymetas tik zaibas, tad atspausdins visas komandas.
+
+KOMENTARAS
+Komentaras yra atliekas prie teksto pridedant --, pvz. -- select 2 as du. Komentaras tesis iki eilutes pabaigos.
+
+TEKSTAS
+
+SQL standarte tekstas, t.y. stringas yra zymimas VIENGUBOM KABUTEM. Pvz. select 'labas;
+
++ SQL supratimu sudetis su kabutese esamu tekstu lygu 0, nes sudetis yra operacija su 2 skaiciais o ne su tektus, pvz. 'labas' + 'krabas' = 0;
+
+; NAUDOJIMAS
+Salygai uzbaigti naudojama ; zenklas.
+
+* NAUDOJIMAS
+Reiskias jog visi stulpeliai ta tvarka kaip isvardinti duomenu bazeje bus pateikti.
+
+_ NAUDOJIMAS
+Sis zenklas _ skirtas naudoti sudurtiniam zodziam pvz. select name as gyvenimas_yra_grazus. Negalima rasyti teksto su tarpais.
+
+SQL DUOMENU BAZES STRUKTURA
+
+SQL rodo 1000 irasu standartiskai, bet limita galima pasididinti einant į query > limit rows
+Limitas uzdetas kad nevalgytu daug atminties.
+
+I ETAPAS:
+
+select name, countrycode;
+from city;
+
+FROM - nurodo is kokio saraso bus imami duomenus
+
+PAAISKINIMAS:
+
+Mes sql serverio paprasem: susirask lentele pavadinimu city, tada eik per ta lentele, per visus irasus ir is kiekvieno iraso paimk NAME, COUNTRYCODE.
+
+Ps. stulpeliu tvarka priklauso kokia tvarka as nurodziau, pvz. select name, countrycode vs select countrycode, name.
+
+II ETAPAS
+select *
+from city;
+
+PAAISKINIMAS:
+
+Visi stulpeliai(irasai) iš city bus isvardinti numatyta tvarka.
+
+III ETAPAS
+select name, countrycode, district
+from city
+where countrycode = 'NDL';
+
+PAAISKINIMAS:
+1.Pirmiausiai susiranda CITY lentele.
+2. Antriausiai lenteleje atfiltruojame ar countrycode = 'NDL'.
+Ps. = nera priskyrimas, tai yra palyginimo operatorius.
+3. Perejo per lentele su NDL reikalavimu ir tada ziuri i likusius irasus kurie sako jog reikia isfiltruoti NAME, COUNTRYCODE, DISTRICT
+
+IV ETAPAS
+SELECT name, district
+FROM city
+WHERE not(population > 1000 or population < 500 or CountryCode <> 'NDL')
+ORDER BY population;
+
+PAAISKINIMAS:
+1. Atliekamas FROM.
+2. Atliekamas WHERE.
+3. Atliekamas ORDER BY.
+4. Ir tik tada filtruojamas SELECT.
+
+ATS.
+Surusiavo miestus pagal population DIDEJIMO tvarka.
+
+V ETAPAS:
+SELECT name, district
+FROM city
+WHERE not(population > 1000 or population < 500 or CountryCode <> 'NDL')
+ORDER BY population DESC;
+
+PAAISKINIMAS:
+1. Atliekamas FROM.
+2. Atliekamas WHERE.
+3. Atliekamas ORDER BY.
+4. Ir tik tada filtruojamas SELECT.
+
+ATS.
+Surusiavo miestus pagal population MAZEJIMO tvarka.
+
+VI ETAPAS:
+select *
+from city
+where countrycode = 'NDL' or countrycode = 'LTU'
+order by countrycode desc, name desc;
+
+PAAISKINIMAS:
+1. Atliekamas FROM.
+2. Atliekamas WHERE.
+3. Atliekamas ORDER BY.
+Visu pirma surusiuota mazejimo tvarka pagal valstybes koda, o po to kiekvienai valstybei miestus surusiavo didejimo tvarka pagal miesto pavadinima.
+4. Ir tik tada filtruojamas SELECT.
+
+WHERE NAME LIKE PANAUDOJIMAS
+LIKE - galima nurodyti specialius simbolius:
+% - procentas reiskia bet kiek bet kokiu simboliu gali buti. 
+
+select *
+from city
+where name like '%vil%'
+
+_ pabraukimas reiskia viena betkokia raide
+
+select *
+from city
+where name like '%v_l%'
+
+WHERE NAME LIKE '...' ESCAPE '-' (cia yra tilde) default naudoojama '\'
+select *
+from city
+where name like '%-_&' escape '-'
+reiskias suras kur yra pabraukimas
+
+JEIGU NEREIKIA ESCAPE
+
+where name like '%--%'
+
+SUDEDAMOSIOS DALYS:
+
+1. SELECT
+2. Select sudedamoji dalis yra FROM
+Tvarka sudedamuju daliu kisti negali.
+3. WHERE - nurodo kokie reikalavimai filtruojant duomenis, ir tik po to kreipia demesi i select reikalavimus
+4. ORDER BY - nurodo rusiavima
+
+
+PALYGINIMO OPERATORIAI:
+
+=    ar lygu
+>    ar daugiau
+<    ar maziau
+>=    ar daugiau arba lygu
+<=    ar maziau arba lygu
+<>    ar nelygu (JS !=)
+ 
+AND    ir (JS &&)
+OR    arba (JS ||)
+NOT    ne (neiginys) (JS !)
+PS. AND TURI PIRMENUBE PRIES OR
+ 
+
+RUSIAVIMO KRYPTYS:
+
+ASC    didejimo tvarka (default)
+DESC    mazejimo tvarka
+
+
+.
