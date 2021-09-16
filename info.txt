@@ -116,6 +116,30 @@ PAAISKINIMAS:
 Visu pirma surusiuota mazejimo tvarka pagal valstybes koda, o po to kiekvienai valstybei miestus surusiavo didejimo tvarka pagal miesto pavadinima.
 4. Ir tik tada filtruojamas SELECT.
 
+WHERE NAME LIKE PANAUDOJIMAS
+LIKE - galima nurodyti specialius simbolius:
+% - procentas reiskia bet kiek bet kokiu simboliu gali buti. 
+
+select *
+from city
+where name like '%vil%'
+
+_ pabraukimas reiskia viena betkokia raide
+
+select *
+from city
+where name like '%v_l%'
+
+WHERE NAME LIKE '...' ESCAPE '-' (cia yra tilde) default naudoojama '\'
+select *
+from city
+where name like '%-_&' escape '-'
+reiskias suras kur yra pabraukimas
+
+JEIGU NEREIKIA ESCAPE
+
+where name like '%--%'
+
 SUDEDAMOSIOS DALYS:
 
 1. SELECT
@@ -144,37 +168,5 @@ RUSIAVIMO KRYPTYS:
 
 ASC    didejimo tvarka (default)
 DESC    mazejimo tvarka
-
-UZDAVINYS:
-Tik valstybiu pavadinimai afrikoje virs 300000 gyventoju surusiuota pagal mazejimo tvarka 
-
-select name as salies_pavadinimas, continent as zemynas, population as zmoniu_skaicius
-from country
-where population > 300000 and continent = 'Africa'
-order by population desc
-
-WHERE NAME LIKE PANAUDOJIMAS
-LIKE - galima nurodyti specialius simbolius:
-% - procentas reiskia bet kiek bet kokiu simboliu gali buti. 
-
-select *
-from city
-where name like '%vil%'
-
-_ pabraukimas reiskia viena betkokia raidemis
-
-select *
-from city
-where name like '%v_l%'
-
-WHERE NAME LIKE '...' ESCAPE '-' (cia yra tilde) default naudoojama '\'
-select *
-from city
-where name like '%-_&' escape '-'
-reiskias suras kur yra pabraukimas
-
-JEIGU NEREIKIA ESCAPE
-
-where name like '%--%'
 
 
