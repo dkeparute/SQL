@@ -7,3 +7,57 @@ from city;
 3. select name, population/1000000 as gyv_mln
 from city;
 
+4. select name, district
+from country;
+KLAIDA: Error Code: 1054. Unknown column 'district' in 'field list'	0.000 sec
+
+5. select name, district
+from city
+where countrycode = "NDL";
+
+6. select *
+from city
+where CountryCode <> 'LTU';
+
+UZDAVINYS
+Rasti Olandijos ar Lietuvos miestu, rajonu pavadinimus, kurie yra tarp milijono ir puses milijono imtinai?
+
+select name, district
+from city
+where population =< 1000000 and population >= 500000 and countrycode = 'NDL' or countrycode = 'LTU''
+
+vs
+
+select name, district
+from city
+where not (population =< 1000000 and population >= 500000 and countrycode = 'NDL') or countrycode = 'LTU'
+
+
+not (population =< 1000000 and population >= 500000 and countrycode = 'NDL') 
+vertimas kitaip
+population > 1000000 or population < 500000 or countrycode <> 'NDL' 
+
+7. SELECT name, district
+FROM city
+WHERE not(population > 1000 or population < 500 or CountryCode <> 'NDL')
+ORDER BY population;
+
+8. select *
+from city
+where countrycode = 'NDL' or countrycode = 'LTU'
+order by countrycode desc, name desc;
+
+9.
+select *
+from city
+where name like '%vil%'
+
+10. select *
+from city
+where name like 'v%s'
+
+11. select *
+from city
+where name like '%v_l%'
+
+12. 
