@@ -27,8 +27,40 @@ SQL standarte tekstas, t.y. stringas yra zymimas VIENGUBOM KABUTEM. Pvz. select 
 
 + SQL supratimu sudetis su kabutese esamu tekstu lygu 0, nes sudetis yra operacija su 2 skaiciais o ne su tektus, pvz. 'labas' + 'krabas' = 0;
 
+; NAUDOJIMAS
+Salygai uzbaigti naudojama ; zenklas.
+
+* NAUDOJIMAS
+Reiskias jog visi stulpeliai ta tvarka kaip isvardinti duomenu bazeje bus pateikti.
+
+_ NAUDOJIMAS
+Sis zenklas _ skirtas naudoti sudurtiniam zodziam pvz. select name as gyvenimas_yra_grazus. Negalima rasyti teksto su tarpais.
 
 SQL DUOMENU BAZES STRUKTURA
+
+SQL rodo 1000 irasu standartiskai, bet limita galima pasididinti einant į query > limit rows
+Limitas uzdetas kad nevalgytu daug atminties.
+
+I ETAPAS:
+
+select name, countrycode;
+from city;
+
+PAAISKINIMAS:
+
+Mes sql serverio paprasem: susirask lentele pavadinimu city, tada eik per ta lentele, per visus irasus ir is kiekvieno iraso paimk NAME, COUNTRYCODE.
+
+Ps. stulpeliu tvarka priklauso kokia tvarka as nurodziau, pvz. select name, countrycode vs select countrycode, name.
+
+II ETAPAS
+select *
+from city;
+
+PAAISKINIMAS:
+
+Visi stulpeliai(irasai) iš city bus isvardinti numatyta tvarka.
+
+
 
 SELECT
 FROM
