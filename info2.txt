@@ -67,3 +67,14 @@ PAAISKINIMAS:
 WHERE ...IS NULL arba IS NOT NULL
 
 Išfiltruos duomenis kurie yra lygus null.
+
+FINALE SUDEDAMOSIOS DALYS:
+
+1. SELECT - nurodymas serveriui duok man kazka tai
+2. FROM - nurodo kuriame faile rinksim duomenis
+3. WHERE - nurodo kokie reikalavimai filtruojant duomenis
+4. GROUP BY - sugrupuoja, suskaido rezultata i grupeles ir kiekviena grupele rezultate bus vienas rezultatinis irasas
+5. HAVING- salyga filtruoti grupuotus irasus
+4. ORDER BY - salyga rusiuoti grupuotus irasus
+
+
