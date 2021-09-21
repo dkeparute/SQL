@@ -1,0 +1,131 @@
+UZKLAUSA KAI NORIU SUDETI DU SELECT REZULTATUS STULPELIU
+I ETAPAS:
+
+select name
+from city
+
+
+ir kita UZKLAUSA
+
+select name
+from country
+
+Juos sudeda į vieną failą taip:
+
+select name
+from city
+union
+select name
+from country
+
+PAAIŠKINIMAS:
+1. Paėmė vieną selektą ir kitą selectą ir sujungė stulpeliu. Dabar yra susimaises sarasas miestu ir valstybiu.
+
+SELECTAS UNION - sujungia kelis selectus į vieną failą
+
+SVARBU: Naudojant UNION, kuomet sudedami keli selectoriai, ORDER BY -rusiuoja pats paskutinis.
+
+II ETAPAS:
+
+select name
+from city
+where name like 'V%'
+union
+select name
+from country
+where name like 'L%'
+order by Population
+
+PAASKINIMAS:
+1. FROM city
+2. WHERE name like 'V%'
+3. FROM country
+4. WHERE  name like 'L%'
+5. select name (country)
+6. select(city)
+7. ORDER by
+
+TAISYKLE: Jeigu selectai dalyvauja UNIONE, jie turi tureti vienoda stulpeliu kieki, t.y. select name vs select name, population - tai nera gerai, turi buti select name, population vs select name, population
+
+III ETAPAS:
+
+select name, Population
+from city
+where name like 'V%'
+union
+select name, Population
+from country
+where name like 'L%'
+order by Population
+
+KAIP IS SARASO ATSKIRTI, KUR YRA VALSTYBE IR KUR YRA MIESTAS?
+NORINT ATSKIRTI KUR KURIS YRA FAILAS GALIMA JAM PRISKIRTI IDENTIFIKAVIMO ŽYMEKLĮ, pvz. vienam selectoriui = miestas, kitam = valstybe.
+
+IV ETAPAS:
+
+select name, Population, 'miestas'
+from city
+where name like 'V%'
+union
+select name, Population, 'valstybe'
+from country
+where name like 'L%'
+order by Population
+
+
+UNION DIRBA DISTINCT REZIME, jeigu surado identiskas eilutes - jis paliks tik viena eilute. 
+By default dirba tik distinct mode.
+
+V ETAPAS: 
+
+Pvz. select name
+from city
+where name like  'vil%'
+union
+select name
+from city
+where name like  'vil%'
+order by name
+
+SVARBU: Jeigu vis gi norime jog UNION Dirbtu ne distinct mode, reik rasyti UNION ALL
+
+VI ETAPAS:
+
+Pvz. select name
+from city
+where name like  'vil%'
+union all
+select name
+from city
+where name like  'vil%'
+order by name
+
+JEIGU PRIE SELECT PRIDEDAME VIENA ELEMENTA IR IJUNGUS DISTINC REZIMA, ATSPAUSDINS TIK NEPASIKARTOJANCIUS KODUS. 
+PS. KODAS AKTYVUS VISOS EILUTES(KODO) RIBOSE.
+
+VII ETAPAS:
+
+Pvz. select distinct CountryCode
+from city
+
+SUPER EILUTES NAUDOJIMAS FROM:
+
+Kadangi gaunama uzklausa from is 2 lenteliu (cekiai ir prekes) SQL serveris suformuos super lentele ir ta lentele bus sudaryta is visu stulpeliu is abieju lenteliu ir visu imanomu kombinaciju,
+
+VIII ETAPAS:
+
+Pvz. 
+select parduotuve, preke,
+from cekiai, prekes
+where cekiai.id = cekiai id
+
+SQL serveris zinos jos where cekiai.id reiks lyginti su stulpeliu cekiai id
+
+SVARBU: SELECT'E GALIU NAUDOTI TIK STULPELIUS PAGAL KURIUOS GRUPUOJU IR AGREGACINES FUNKCIJAS.
+Pvz. country.name - nebegalima naudoti, tokiu atveju prie group by reikia prideti country.name
+
+
+
+
+
+
