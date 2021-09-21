@@ -1,0 +1,52 @@
+UZDAVINYS
+miesto pavadinimas, salies pavadinimas, surusiuotas pagal salies koda.
+
+select city.name, country.name
+from city, country
+where countrycode = code
+
+UZDAVINYS:
+valstybes kodas, valstybes pavadinimas, miestu toje valstybeje kiekis
+surusiuotas pagal miestu kodus toje salyje kieki mazejimo tvarka
+
+select code, country.name, count(*) 
+from city, country
+where country.code = city.countrycode
+group by code, country.name;
+
+*****Sitaip sprendimas veiktu Orackle, bet va sitaip neveiktu Orackle:
+
+select code, country.name, count(*) 
+from city, country
+where country.code = city.countrycode
+group by code
+
+
+UZDAVINYS:
+
+1. valstybes kodas, miesto pavadinimas, valstybes pavadinimas, oficialiu kalbu kiekis
+
+select country.code as valstybes_kodas, city.name as miesto_pavadinimas, country.name as valstybes_pavadinimas,
+sum(countrylanguage.isofficial) as oficialiu_kalbu_kiekis
+from country, city, countrylanguage
+
+2. from country, city, countrylanguage
+
+
+3. tik zemynuose: europa ir afrika kur daugiau nei viena oficiali kalba
+
+where country.code = city.countrycode and country.code = countrylanguage.countrycode and (continent = 'Europe' or
+continent = 'Africa') and countrylanguage.isofficial = true 
+
+4. surusiuota pagal oficialiu kalbu kieki mazejimo tvarka, 
+
+group by countrylanguage.isofficial, country.name, country.code, city.name
+
+having sum(countrylanguage.isofficial) > 1
+
+valstybes pavadinima didejimo tvarka
+
+order by sum(countrylanguage.isofficial) desc, country.name asc
+
+
+ 
