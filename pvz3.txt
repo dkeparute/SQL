@@ -49,4 +49,12 @@ valstybes pavadinima didejimo tvarka
 order by sum(countrylanguage.isofficial) desc, country.name asc
 
 
- 
+ KITAS VARIANTAS
+
+
+ select city.id, city.name, city.CountryCode, country.name, count(*)
+from country, city, countrylanguage
+where country.code= city.CountryCode and country.code=countrylanguage.CountryCode and IsOfficial = 'T' and (continent = 'africa' or continent = 'europe')
+group by city.id, city.name, city.CountryCode, country.name
+having count(*)>1
+order by count(*) desc, city.CountryCode
