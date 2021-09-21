@@ -1,0 +1,21 @@
+  JEIGU NORIU PARODYTI MIESTA IR SOSTINE:
+  Senas SQL variantas:
+
+  select c1.name, c2.name as sostine
+  from city c1, city c2, country
+  where c1.countrycode = country.code and country.capital = c2.id and c1.countrycode = 'LTU'
+
+  SENAS VARIANAS NORINT RASTI MIESTO PAVADINIMA, SALI, SALIES KODA:
+
+ select city.name, country.name, country.code
+  from city, country
+  where city.countrycode = country.code and country.code like 'L%'
+
+  NAUJAS VARIANTAS NORINT RASTI MIESTO PAVADINIMA, SALI, SALIES KODA:
+
+ select city.name, country.name, country.code
+  from city join country on city.countrycode = country.code
+  where country.code like 'L%'
+
+INNER JOINT paims irasus kurie turies atitikmenis lentelese
+

@@ -1,0 +1,29 @@
+1.select
+--     city.id,
+    city.name as miestas,
+    city.CountryCode as kodas,
+    country.name as valstybe,
+    count(*) as oficialios_kalbos,
+    sostines.name as sostine
+from
+    country,
+    city,
+    countrylanguage,
+    city as sostines
+where
+    country.code = city.CountryCode and
+    country.code = countrylanguage.CountryCode and
+    country.Capital = sostines.id and
+    IsOfficial = 'T' and
+    (continent = 'africa' or continent = 'europe')
+group by
+    city.id,
+    city.name,
+    city.CountryCode,
+    country.name,
+    sostines.name
+having count(*) > 1
+order by
+    count(*) desc,
+    country.name
+
