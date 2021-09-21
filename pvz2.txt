@@ -44,7 +44,7 @@ tik nepriklausomas valstybes
 pagal kontinenta ir regiona
 nerodyti mazesniu valstybiu plotu vidurkiu negu 1000
 
-select count(*) as salys, continent as zemynas, region as regionas, sum(surfacearea) as bendras_valst_plot, 
+select continent as zemynas, region as regionas, sum(surfacearea) as bendras_valst_plot, 
 sum(population) as bendras_gyv_kiekis, avg(surfacearea) as bendras_valst_plotu_vid
 from country
 where indepyear is not null
