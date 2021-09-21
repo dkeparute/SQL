@@ -122,7 +122,7 @@ where cekiai.id = cekiai id
 SQL serveris zinos jos where cekiai.id reiks lyginti su stulpeliu cekiai id
 
 SVARBU: SELECT'E GALIU NAUDOTI TIK STULPELIUS PAGAL KURIUOS GRUPUOJU IR AGREGACINES FUNKCIJAS.
-Pvz. country.name - nebegalima naudoti, tokiu atveju prie group by reikia prideti country.name
+Pvz. country.name - nebegalima naudoti, tokiu atveju prie group by reikia prideti country.name, tada viskas gerai
 
 
 
