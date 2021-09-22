@@ -61,3 +61,18 @@ where country code like 'L%'
 PAAISKINIMAS:
 1. from city join country - as pasakau jog reikia selectinti is city lenteles, prie jos prijungti country lentele pagal salyga: city.countrycode = country.code
 2. CIA NAUDOJAMAS INNER JOIN
+
+________________________________________________________________
+UZDAVINYS: atspausdinti sarasa aktoriu (vardas, pavarde, kiek tokiu filmu), kurie vaidino daugiau nei 2 'Action' filmuose
+
+select actor.first_name as vardas, actor.last_name as pavarde, count(*) as kiek_tokiu_filmu
+from actor, category, film, film_actor, film_category
+where category.name = 'Action'
+and actor.actor_id = film_actor.actor_id
+and film.film_id = film_actor.film_id
+and category.category_id = film_category.category_id
+group by actor.first_name, actor.last_name
+having count(*) > 2
+order by count(*) desc
+
+
