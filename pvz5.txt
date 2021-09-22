@@ -1,0 +1,28 @@
+Duomenu baze pavadinimu ZMONES
+
+Lentele: ZMONES
+-id NN
+-vardas NN
+-pavarde    NN
+-gimimo data    
+-alga
+
+Lentele: ADRESAI
+-id
+-zmones_id
+-adresas
+-miestas
+-valstybe
+-pasto kodas
+
+
+zmones_id rodys i id
+
+Lentele: KONTAKTAI
+-id
+-zmones_id
+-tipas
+-reiksme
+
+on delete - Restrict
+on update - cascada
