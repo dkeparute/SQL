@@ -1,21 +1,79 @@
-  JEIGU NORIU PARODYTI MIESTA IR SOSTINE:
-  Senas SQL variantas:
+INNER JOIN REISKIA KAD JISAI PAIMS TIK TUOS IRASUS KURIE TURI ATITIKMENIS ABIEJOSE LENTELESE
+________________________________________________________________
+OUTER JOIN standarte yra 2 rusiu:
 
-  select c1.name, c2.name as sostine
-  from city c1, city c2, country
-  where c1.countrycode = country.code and country.capital = c2.id and c1.countrycode = 'LTU'
+LEFT(as paimsiu visus irasus is kaires lenteles ir tikt tuos irasus kur turi atitikmenis is desines ) 
+ir 
+RIGHT (as paimsiu visus irasus is desines lenteles ir tikt tuos irasus kur turi atitikmenis is kaires)
+________________________________________________________________
+NE PAGAL STANDARTĄ DAR YRA FULL JOIN (my sql turi, bet kiti serveriai gali netureti)
 
-  SENAS VARIANAS NORINT RASTI MIESTO PAVADINIMA, SALI, SALIES KODA:
+Jeigu kaire lentele neturi atitikmens, jam bus sukurtas papildomas atitikmuo; jeigu desine lentele netures atitikmens - bus sukurtas papildomas atitikmuo.
 
- select city.name, country.name, country.code
-  from city, country
-  where city.countrycode = country.code and country.code like 'L%'
+________________________________________________________________
 
-  NAUJAS VARIANTAS NORINT RASTI MIESTO PAVADINIMA, SALI, SALIES KODA:
+IRASO IDEJIMAS I LENTELES DUOMENU SARASA ---> INSERT NAUDOJIMAS
 
- select city.name, country.name, country.code
-  from city join country on city.countrycode = country.code
-  where country.code like 'L%'
+--select * from city where countrycode = 'LTU'
 
-INNER JOINT paims irasus kurie turies atitikmenis lentelese
+insert into city
+values(500, 'Bandymas', 'LTU', 'Prienai', 900)
 
+PAAISKINIMAS:
+Prides irasa i lentele city.
+Priskirs reiksmes pagal lenteliu eiliskuma(id, name, countrycode...tt.), kqaip nurodyta duomenu bazeje
+
+NORINT PRISKIRTI KONKRECIAS REIKSMES KONKRECIAM IRASUI:
+
+insert into city (countrycode, district, name, population) 
+values ('LTU', 'Jurbarkas', 'Klausuciai', 902)
+
+PAAISKINIMAS:
+Cia patys nurodeme laukus ir ta tvarka kaip patys norejom - ne taip kaip duomenu bazeje nurodyta
+
+INSERT YRA SINGLE LINE SQL standarte  - t.y. komanda veikia tik su vienu irasu, tai jeigu reikia 50 irasu, reiskias bus 50 komandu
+_______________________________________________________________
+
+JEIGU NORIME ATNAUJINTI IDETA IRASA ...> UPDATE NAUDOJIMAS
+
+update city
+set district = 'Jurbarko sav', population = population +10
+
+PAAISKINIMAS:
+Visiems city miestams district padarys Jurbarko sav', o population = population +10
+
+TAM KAD TAIP NEBUTU REIKIA PRISKIRTI ID ELEMENTO KAM KONKRECIAI KEICIAMA INFO
+
+pvz. 
+update city
+set district = 'Jurbarko sav', population = population +10
+where id = 5001 (jeigu toks id)
+
+arba
+update city
+set district = 'Jurbarko sav', population = population +10
+where countrycode = 'LTU'
+
+_______________________________________________________________
+
+KAIP ISTRINTI IRASUS ---> DELETE NAUDOJIMAS
+
+delete from city 
+
+PAAISKINIMAS:
+*istrintu viska is city lenteles
+
+TAM KAD TAIP NEBUTU REIKIA PRISKIRTI ID AR KITA ELEMENTA
+
+delete from city 
+where id = 5000
+
+arba 
+
+delete from citywhere countrycode = 'AFG'
+
+_______________________________________________________________
+
+DML REIKSME - DATA MANIPULATION LANGUAGE
+
+Insert, update, delete sudaro SQL komandu pogrupi kuris yra DML
