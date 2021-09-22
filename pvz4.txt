@@ -1,10 +1,12 @@
-1.select
---     city.id,
+1. NORINT MATYTI SOSTINES PAVADINIMA
+Reikia prie form prideti duomenis is lenteles city, bet jau city yra, tad city persivadinam kaip city as sostines (arba city sostines)
+select
+--  city.id,
     city.name as miestas,
     city.CountryCode as kodas,
     country.name as valstybe,
     count(*) as oficialios_kalbos,
-    sostines.name as sostine
+    sostines.name as sostine (rodo sostines varda)
 from
     country,
     city,
@@ -21,9 +23,41 @@ group by
     city.name,
     city.CountryCode,
     country.name,
-    sostines.name
+    sostines.name (tam kad sql serverio standart atitiktu kaip ir select sositines.name)
 having count(*) > 1
 order by
     count(*) desc,
     country.name
 
+2. select *
+from city c1, city c2
+DAUGINASI REIKSMES
+________________________________________________________________
+3.PARODYTI MIESTO PAVADINIMA IR SOSTINE (SENAS SQL VARIANTAS)
+Cia naudojama city lentele kelis kartus tik priskiriama kita city reiksme
+
+select c1.name, c2.name as sostine
+from city c1, city c2, country 
+where c1.countrycode = country.code and country.capital = c2.id 
+
+PARODYTI MIESTO PAVADINIMA IR SOSTINE (NAUJAS SQL VARIANTAS)
+select c1.name, c2.name as sostine
+from city c1 join country on c1.countrycode = country.code join city c2 on country.capital = c2.id 
+________________________________________________________________
+
+4.RASTI MIESTO PAVADINIMA, SALIES PAVADINIMA IR SALIES KODA(SENAS SQL VARIANTAS)
+
+select city.name, country.name, country.code
+from city, country
+where city.countrycode = country.code and country code like 'L%'
+
+
+RASTI MIESTO PAVADINIMA, SALIES PAVADINIMA IR SALIES KODA( NAUJAS SQL VARIANTAS)
+
+select city.name, country.name, country.code
+from city join country on city.countrycode = country.code
+where country code like 'L%'
+
+PAAISKINIMAS:
+1. from city join country - as pasakau jog reikia selectinti is city lenteles, prie jos prijungti country lentele pagal salyga: city.countrycode = country.code
+2. CIA NAUDOJAMAS INNER JOIN
