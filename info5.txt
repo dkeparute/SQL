@@ -7,7 +7,7 @@ ALTER
 
 DROP
 
-DUOMENU BAZES KURIMAS (GIREZTOS IR PIKTOS KOMANDOS, NIEKAS NEAPSAUGOS)
+DUOMENU BAZES KURIMAS (GRIEZTOS IR PIKTOS KOMANDOS, NIEKAS NEAPSAUGOS)
 
 sukuriama: create database apskaita
 istrinama: drop database apskaita
@@ -15,23 +15,34 @@ istrinama: drop database apskaita
 
 *charset pasako kurio kodavimo budo noresi. Duomenu bazeje vienas simbolis uzims 1 baita. Mes naudosim utf-8
 *collation renkames utf8 bin
+SPAUDZIAME APPLY norint sukurti apskaitos duomenu baze
+_____________________________________________________
+LENTELES SUKURIMAS
 
-Apskaitoje spaudziam Table > create table, ten pataisome NAME, o kur yra ENGINE - rasom 
+Apskaitoje spaudziam Table > create table, ten pataisome NAME i norima pavadinima
+Engine nurodome InnoDB
+
+
 _______________________________________________________________
 TIPAI
-INT- sveikas skaicius
-int == decimal(11,0)
-decimal(5,2) skaiciai 123.54, 99.99
-decimal(8,0) skaiciai sveiki 123456789
+INT- sveikas skaicius t.y int == decimal(8,0)
+decimal(5,2 - penki skaitmenys ir du is ju po kablelio) skaiciai 123.54, 999.99
+decimal(8,0 - astuoni sveiki skaitmenys) skaiciai sveiki 12345678
 ___________________________
 PK - sitas laukas primary key, unikaliai identifikuoja viena irasa
-NN - not null, neleis irasyti null
-UQ - unique, jeigu nori jog butu skirtingos reiksmes
+NN - not null, neleis irasyti null, butinai turi duoti kazkokia reiksme
+UQ - unique, jeigu nori jog kazkokiam stulpeliui butu tik skirtingos reiksmes
 B- binary, kai reikalingas padidintas saugumas
-UN - 
-ZF - 
-AI- auto increment'as sitas laukas automatiskai dides po viena
-G
+UN - unsigned, visos reiksmes bus tiktai teigiamos
+ZF - zerofill, 
+
+*pvz. decimal(7,4)
+be zero fil ats. butu 45.3, su zerofil butu 45.3000
+
+AI- auto increment'as sitas laukas automatiskai dides po viena elementa
+G - generated collumn
+
+Default/expression:
 now - atspausdina esama data-laika
 
 date  - tik data
@@ -45,9 +56,9 @@ varchar(20) - bus saugomas tekstas ir max ilgis 20 simboliu
 pvz. 'alius' bus 'alius\u00000000...'
 
 *tekstas telpa nuo 1 iki 255 
-
-FOREIGN KEY nurodo kelia i kita lauka
+_________________________________
+FOREIGN KEYS laukas nurodo i kitos lenteles esanti irasa
 
 FOREIGN KEY OPTIONS: RESTRICT IR CASCADE
-Restrict - 
+Restrict - lenteleje neleis pakeist id jeigu yra bent koks elementas i ta id
 Cascade - 
