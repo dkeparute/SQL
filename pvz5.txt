@@ -1,3 +1,5 @@
+UZDAVINYS: SUKURTI
+
 Duomenu baze pavadinimu ZMONES
 
 Lentele: ZMONES
@@ -23,6 +25,8 @@ Lentele: KONTAKTAI
 -zmones_id
 -tipas
 -reiksme
+
+zmones_id rodys i id
 
 on delete - Restrict
 on update - cascada
