@@ -7,3 +7,47 @@ ALTER
 
 DROP
 
+DUOMENU BAZES KURIMAS (GIREZTOS IR PIKTOS KOMANDOS, NIEKAS NEAPSAUGOS)
+
+sukuriama: create database apskaita
+istrinama: drop database apskaita
+*arba galima rankiniu budu paspausti mygtuka create new_shema (t.y. ta pati duomenu baze)
+
+*charset pasako kurio kodavimo budo noresi. Duomenu bazeje vienas simbolis uzims 1 baita. Mes naudosim utf-8
+*collation renkames utf8 bin
+
+Apskaitoje spaudziam Table > create table, ten pataisome NAME, o kur yra ENGINE - rasom 
+_______________________________________________________________
+TIPAI
+INT- sveikas skaicius
+int == decimal(11,0)
+decimal(5,2) skaiciai 123.54, 99.99
+decimal(8,0) skaiciai sveiki 123456789
+___________________________
+PK - sitas laukas primary key, unikaliai identifikuoja viena irasa
+NN - not null, neleis irasyti null
+UQ - unique, jeigu nori jog butu skirtingos reiksmes
+B- binary, kai reikalingas padidintas saugumas
+UN - 
+ZF - 
+AI- auto increment'as sitas laukas automatiskai dides po viena
+G
+now - atspausdina esama data-laika
+
+date  - tik data
+time - tik laikas
+datetime --- data ir laikas
+
+char(10) - bus saugomas tekstas ir max ilgis 10 simboliu
+pvz. 'alius' bus 'alius    ' - didelis tuscias tarpas
+
+varchar(20) - bus saugomas tekstas ir max ilgis 20 simboliu
+pvz. 'alius' bus 'alius\u00000000...'
+
+*tekstas telpa nuo 1 iki 255 
+
+FOREIGN KEY nurodo kelia i kita lauka
+
+FOREIGN KEY OPTIONS: RESTRICT IR CASCADE
+Restrict - 
+Cascade - 
