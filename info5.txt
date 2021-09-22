@@ -1,0 +1,9 @@
+DDL - data definition language
+Su sitom komandom kuriam ne duomenis, o objektus duomenu bazeje, t.y. lenteles, indexus, pacias duomenu bazes
+
+CREATE
+
+ALTER
+
+DROP
+
